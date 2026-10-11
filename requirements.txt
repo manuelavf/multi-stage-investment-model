@@ -1,28 +1,26 @@
 # multistage-investment-model
 
-# --- Núcleo numérico y de datos (todos los notebooks) ---
+# --- Núcleo numérico y de datos ---
 numpy>=1.26,<3
 pandas>=2.2,<4
 
-# --- Optimización: LP con HiGHS y duales (notebooks 03, 04 y 05) ---
-# scipy.optimize.linprog(method="highs") devuelve los multiplicadores en res.eqlin.marginals
+# --- Optimización: LP con HiGHS y duales  ---
 scipy>=1.11
-# Interfaz directa a HiGHS: opcional, sirve para contrastar duales y signos con otro acceso al mismo solver
 highspy>=1.7
 
-# --- Descarga de datos (notebook 00) ---
-yfinance>=0.2.40          # referencia [5] del enunciado; con auto_adjust=False
-requests>=2.31            # ruta alternativa por enlaces JSON (sección 2.3)
-pandas_market_calendars>=4.4   # último día de negociación de NYSE por trimestre
+# --- Descarga de datos  ---
+yfinance>=0.2.40          
+requests>=2.31            
+pandas_market_calendars>=4.4  
 
-# --- Visualización (notebooks 01, 02, 04, 05 y 06) ---
+# --- Visualización  ---
 matplotlib>=3.8
 
 # --- Tablas para el informe ---
-tabulate>=0.9             # DataFrame.to_markdown
-jinja2>=3.1               # DataFrame.to_latex y Styler
+tabulate>=0.9            
+jinja2>=3.1              
 
 # --- Entorno Jupyter ---
 jupyterlab>=4.0
 ipykernel>=6.29
-nbconvert>=7.16           # ejecutar todos los notebooks en orden desde la terminal
+nbconvert>=7.16         
