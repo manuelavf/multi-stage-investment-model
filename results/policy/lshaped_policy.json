@@ -1,0 +1,31 @@
+{
+  "description": "Política óptima de L-shaped anidado (caso completo), congelada antes de usar datos de 2026",
+  "frozen_at_utc": "2026-10-11T22:23:53+00:00",
+  "calibration_parameters_sha256": "2d98f5cdf64503d7d91f72f3dcbddc65a094e19a2cb47afa3f602e4b9ab708f4",
+  "tree_csv_sha256": "ed4da31afee3e8d6834f7fa51d47470b4ee75c552d75eeb2f4ec82ff11021da9",
+  "method": "L-shaped anidado, recorridos completos, un corte agregado por nodo y pasada",
+  "solver": "scipy.optimize.linprog(method='highs'), scipy 1.18.1",
+  "RP_expected_cost": 1.2711985136569242,
+  "LB": 1.271198513665244,
+  "rel_gap": -6.544838758462333e-12,
+  "tolerance": 1e-06,
+  "iterations": 17,
+  "best_policy_iteration": 17,
+  "cuts_total": 349,
+  "cuts_by_stage": {
+    "1": 16,
+    "2": 77,
+    "3": 256
+  },
+  "lp_solved": 11187,
+  "time_s": 3.0371492499998567,
+  "cut_rule": "Se agrega un corte solo si es violado en la solución actual (clase 7, diapositiva 46)",
+  "final_backward_violated_cuts": 0,
+  "application_rule": "Extensión por proporciones (sección 5.2): la terna de signos observada (SPY, LQD, GLD; B si r < 0, A si r ≥ 0) determina la historia y el nodo; las proporciones f de ese nodo se aplican a la riqueza realmente disponible. La riqueza se actualiza con los factores reales. No se reestiman parámetros ni se reoptimiza con datos de 2026.",
+  "fallback_rule": "Solo si se eliminó un estado en calibración y aparece en validación: repartir la riqueza en partes iguales entre los tres activos durante los períodos restantes.",
+  "removed_states": [],
+  "policy_csv": "results/policy/lshaped_policy_73_nodes.csv",
+  "policy_csv_sha256": "440383399be252c4c38257762d36f7a443fe65bb27bf2838d29da942345686cf",
+  "leaves_csv": "results/policy/lshaped_leaves_512.csv",
+  "leaves_csv_sha256": "a0b184d9e64a32f64e27b7724143c2c9fdf66ebdc38cf52505f2135d21b4baa6"
+}
