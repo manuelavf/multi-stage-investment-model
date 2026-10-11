@@ -1,0 +1,12 @@
+,instancia reducida,caso completo
+ciclos (pasadas adelante),6,17
+cortes agregados,19,349
+LP resueltos,126,11169
+tiempo (s),0.0618327919992,3.03714925
+LB final,-10.8024277068,1.27119851367
+UB final,-10.8024277068,1.27119851366
+brecha relativa final,6.4131803162e-14,-6.54483875846e-12
+ciclo de la mejor política,6,17
+cortes violados generados,19,349
+cortes evaluados,35,1168
+cortes violados en la certificación final,0,0
