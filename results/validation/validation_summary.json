@@ -1,0 +1,33 @@
+{
+  "created_at_utc": "2026-10-10T22:07:46+00:00",
+  "policies_verified_at_utc": "2026-10-10T22:07:11+00:00",
+  "stochastic_policy_sha256": "cd14f863cae114d123e1c778b933319bd8c663fd7340820389dd5ea21904a82d",
+  "ev_policy_sha256": "e96582c50c1f2a9db28597c1f47249c9def4feca7e2afe7a854ed1fd3dc33691",
+  "validation_csv_sha256": "de49ef8063f0c97d532a2bd7f44454d153dd2248ae94b0360c02bd70b0f5a645",
+  "observed_states": {
+    "1": "BBA",
+    "2": "AAB",
+    "3": "ABA"
+  },
+  "observed_history": "BBA|AAB|ABA",
+  "fallback_activated": false,
+  "goal_tolerance_thousands_usd": 1e-06,
+  "stochastic": {
+    "riqueza terminal Ṽ⁴": 115.11559757557866,
+    "rendimiento acumulado Ṽ⁴/b − 1": 0.15115597575578654,
+    "exceso": 9.115597575578661,
+    "déficit": 0.0,
+    "costo realizado": -9.115597575578661,
+    "cumple la meta (1/0)": 1
+  },
+  "ev": {
+    "riqueza terminal Ṽ⁴": 112.70921455083892,
+    "rendimiento acumulado Ṽ⁴/b − 1": 0.12709214550838932,
+    "exceso": 6.709214550838922,
+    "déficit": 0.0,
+    "costo realizado": -6.709214550838922,
+    "cumple la meta (1/0)": 1
+  },
+  "realized_cost_difference_ev_minus_stochastic": 2.406383024739739,
+  "note": "Una sola trayectoria: no es el VSS ni permite conclusiones generales (sección 5.4)."
+}
