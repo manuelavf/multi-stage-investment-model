@@ -1,0 +1,91 @@
+{
+  "block": "calibration",
+  "purpose": "Estimar probabilidades y factores; construir el árbol",
+  "source": "Yahoo Finance (históricos diarios)",
+  "field": "Adj Close (cierre ajustado, en USD)",
+  "download_method": "yfinance",
+  "auto_adjust": false,
+  "dividends_added_separately": false,
+  "requested_window": {
+    "start": "2009-12-01",
+    "end_inclusive": "2025-12-31",
+    "end_exclusive_sent_to_tool": "2026-01-01"
+  },
+  "date_convention": "Fecha de la sesión en America/New_York",
+  "quarter_end_rule": "Última sesión de negociación del trimestre calendario",
+  "calendar_check": "pandas_market_calendars (XNYS)",
+  "consulted_at_utc": "2026-10-04T21:26:02+00:00",
+  "consulted_at_bogota": "2026-10-04T16:26:02-05:00",
+  "tickers": [
+    "SPY",
+    "LQD",
+    "GLD"
+  ],
+  "sources_by_ticker": {
+    "SPY": {
+      "tool": "yfinance",
+      "tool_version": "1.7.0",
+      "call": "yf.download('SPY', start='2009-12-01', end='2026-01-01', interval='1d', auto_adjust=False, actions=False)"
+    },
+    "LQD": {
+      "tool": "yfinance",
+      "tool_version": "1.7.0",
+      "call": "yf.download('LQD', start='2009-12-01', end='2026-01-01', interval='1d', auto_adjust=False, actions=False)"
+    },
+    "GLD": {
+      "tool": "yfinance",
+      "tool_version": "1.7.0",
+      "call": "yf.download('GLD', start='2009-12-01', end='2026-01-01', interval='1d', auto_adjust=False, actions=False)"
+    }
+  },
+  "daily_cleaning_by_ticker": {
+    "SPY": {
+      "rows_downloaded": 4046,
+      "duplicates_removed": 0,
+      "rows_outside_window_removed": 0,
+      "rows_nan_adj_close_removed": 0,
+      "rows_kept": 4046,
+      "first_session": "2009-12-01",
+      "last_session": "2025-12-31"
+    },
+    "LQD": {
+      "rows_downloaded": 4046,
+      "duplicates_removed": 0,
+      "rows_outside_window_removed": 0,
+      "rows_nan_adj_close_removed": 0,
+      "rows_kept": 4046,
+      "first_session": "2009-12-01",
+      "last_session": "2025-12-31"
+    },
+    "GLD": {
+      "rows_downloaded": 4046,
+      "duplicates_removed": 0,
+      "rows_outside_window_removed": 0,
+      "rows_nan_adj_close_removed": 0,
+      "rows_kept": 4046,
+      "first_session": "2009-12-01",
+      "last_session": "2025-12-31"
+    }
+  },
+  "n_prices_per_asset": 65,
+  "quarters": [
+    "2009Q4",
+    "2025Q4"
+  ],
+  "index_name": "j",
+  "csv_file": "data/calibration/quarterly_adjclose_2009_2025.csv",
+  "csv_sha256": "a6ae2e777012912a7e1385863c1ed83f42de937ac72b92c0cdee930186a239dc",
+  "checks_passed": [
+    "65 precios por activo",
+    "trimestres exactos 2009Q4 a 2025Q4, sin huecos ni repetidos",
+    "precios finitos y positivos",
+    "cada fecha pertenece a su trimestre, en orden cronológico",
+    "cada fecha es la última sesión oficial NYSE del trimestre (festivos incluidos)",
+    "último trimestre 2025Q4 completo a la fecha de ejecución"
+  ],
+  "environment": {
+    "python": "3.14.6",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3"
+  }
+}
