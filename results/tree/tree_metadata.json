@@ -1,0 +1,47 @@
+{
+  "description": "Árbol de escenarios (Práctica 2, sección 3.2)",
+  "created_at_utc": "2026-10-11T23:08:18+00:00",
+  "calibration_parameters_sha256": "2d98f5cdf64503d7d91f72f3dcbddc65a094e19a2cb47afa3f602e4b9ab708f4",
+  "H": 4,
+  "S": 8,
+  "active_states": [
+    "AAA",
+    "AAB",
+    "ABA",
+    "ABB",
+    "BAA",
+    "BAB",
+    "BBA",
+    "BBB"
+  ],
+  "tickers": [
+    "SPY",
+    "LQD",
+    "GLD"
+  ],
+  "K_t": {
+    "1": 1,
+    "2": 8,
+    "3": 64,
+    "4": 512
+  },
+  "n_nodes": 585,
+  "indexing": "hijo de (t,k) por la rama en la posición s: l = S*(k-1) + s + 1; padre: (l-1)//S + 1",
+  "example_stage2_node": {
+    "t": 2,
+    "k": 1,
+    "history": "AAA"
+  },
+  "sum_leaf_probabilities": 1.0,
+  "checks_passed": [
+    "K_t = [1, 8, 64, 512], total 585 nodos (73 de decisión y 512 hojas)",
+    "p¹₁ = 1",
+    "las probabilidades de cada etapa suman 1; hojas: Σ p⁴ = 1.000000000000000",
+    "historias únicas: cada trayectoria tiene un solo nodo",
+    "en los 73 padres, Σ q(ℓ|k) = 1 (error máx. 0.0e+00) y p^(t+1)_ℓ / p^t_k = q̂_u (error máx. 0.0e+00)",
+    "p⁴_k = q̂_z1 · q̂_z2 · q̂_z3 en las hojas",
+    "node_from_history reproduce el nodo de cada historia"
+  ],
+  "csv_file": "results/tree/scenario_tree_nodes.csv",
+  "csv_sha256": "ed4da31afee3e8d6834f7fa51d47470b4ee75c552d75eeb2f4ec82ff11021da9"
+}
