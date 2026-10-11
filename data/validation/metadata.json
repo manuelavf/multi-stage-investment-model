@@ -1,0 +1,91 @@
+{
+  "block": "validation",
+  "purpose": "Validación fuera de muestra; no se usa para estimar ni ajustar la política",
+  "source": "Yahoo Finance (históricos diarios)",
+  "field": "Adj Close (cierre ajustado, en USD)",
+  "download_method": "yfinance",
+  "auto_adjust": false,
+  "dividends_added_separately": false,
+  "requested_window": {
+    "start": "2025-12-01",
+    "end_inclusive": "2026-09-30",
+    "end_exclusive_sent_to_tool": "2026-10-01"
+  },
+  "date_convention": "Fecha de la sesión en America/New_York",
+  "quarter_end_rule": "Última sesión de negociación del trimestre calendario",
+  "calendar_check": "pandas_market_calendars (XNYS)",
+  "consulted_at_utc": "2026-10-04T21:26:16+00:00",
+  "consulted_at_bogota": "2026-10-04T16:26:16-05:00",
+  "tickers": [
+    "SPY",
+    "LQD",
+    "GLD"
+  ],
+  "sources_by_ticker": {
+    "SPY": {
+      "tool": "yfinance",
+      "tool_version": "1.7.0",
+      "call": "yf.download('SPY', start='2025-12-01', end='2026-10-01', interval='1d', auto_adjust=False, actions=False)"
+    },
+    "LQD": {
+      "tool": "yfinance",
+      "tool_version": "1.7.0",
+      "call": "yf.download('LQD', start='2025-12-01', end='2026-10-01', interval='1d', auto_adjust=False, actions=False)"
+    },
+    "GLD": {
+      "tool": "yfinance",
+      "tool_version": "1.7.0",
+      "call": "yf.download('GLD', start='2025-12-01', end='2026-10-01', interval='1d', auto_adjust=False, actions=False)"
+    }
+  },
+  "daily_cleaning_by_ticker": {
+    "SPY": {
+      "rows_downloaded": 209,
+      "duplicates_removed": 0,
+      "rows_outside_window_removed": 0,
+      "rows_nan_adj_close_removed": 0,
+      "rows_kept": 209,
+      "first_session": "2025-12-01",
+      "last_session": "2026-09-30"
+    },
+    "LQD": {
+      "rows_downloaded": 209,
+      "duplicates_removed": 0,
+      "rows_outside_window_removed": 0,
+      "rows_nan_adj_close_removed": 0,
+      "rows_kept": 209,
+      "first_session": "2025-12-01",
+      "last_session": "2026-09-30"
+    },
+    "GLD": {
+      "rows_downloaded": 209,
+      "duplicates_removed": 0,
+      "rows_outside_window_removed": 0,
+      "rows_nan_adj_close_removed": 0,
+      "rows_kept": 209,
+      "first_session": "2025-12-01",
+      "last_session": "2026-09-30"
+    }
+  },
+  "n_prices_per_asset": 4,
+  "quarters": [
+    "2025Q4",
+    "2026Q3"
+  ],
+  "index_name": "tau",
+  "csv_file": "data/validation/quarterly_adjclose_2025_2026.csv",
+  "csv_sha256": "de49ef8063f0c97d532a2bd7f44454d153dd2248ae94b0360c02bd70b0f5a645",
+  "checks_passed": [
+    "4 precios por activo",
+    "trimestres exactos 2025Q4 a 2026Q3, sin huecos ni repetidos",
+    "precios finitos y positivos",
+    "cada fecha pertenece a su trimestre, en orden cronológico",
+    "cada fecha es la última sesión oficial NYSE del trimestre (festivos incluidos)",
+    "último trimestre 2026Q3 completo a la fecha de ejecución"
+  ],
+  "environment": {
+    "python": "3.14.6",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3"
+  }
+}
