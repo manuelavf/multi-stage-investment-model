@@ -1,7 +1,7 @@
 {
   "description": "Regla EV: proporciones fijas g^t_i del modelo de valor esperado (sección 5.1)",
-  "frozen_at_utc": "2026-10-11T22:24:43+00:00",
-  "calibration_parameters_sha256": "2d98f5cdf64503d7d91f72f3dcbddc65a094e19a2cb47afa3f602e4b9ab708f4",
+  "frozen_at_utc": "2026-10-16T13:32:58+00:00",
+  "calibration_parameters_sha256": "0b6c11176d5c2e240279d5aacba913c3f471c1a3c39406101f0bbac770cc4ca3",
   "R_bar": {
     "SPY": 1.0361178588418332,
     "LQD": 1.0106918126637763,
@@ -24,10 +24,10 @@
       "GLD": 0.0
     }
   },
-  "ev_model_objective": -5.231419144446569,
+  "ev_model_objective": -5.231419144446581,
   "ev_path_terminal_wealth": 111.23141914444658,
   "EEV": 2.753227776492672,
-  "RP": 1.2711985136569242,
-  "VSS": 1.4820292628357477,
+  "RP": 1.2711985137122794,
+  "VSS": 1.4820292627803924,
   "application_rule": "En cada etapa t se invierten las proporciones g^t_i de la riqueza realmente disponible, sin cambiarlas según lo observado. La riqueza de esta política se actualiza por separado."
 }

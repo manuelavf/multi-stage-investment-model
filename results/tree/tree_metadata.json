@@ -1,7 +1,7 @@
 {
   "description": "Árbol de escenarios (Práctica 2, sección 3.2)",
-  "created_at_utc": "2026-10-11T23:08:18+00:00",
-  "calibration_parameters_sha256": "2d98f5cdf64503d7d91f72f3dcbddc65a094e19a2cb47afa3f602e4b9ab708f4",
+  "created_at_utc": "2026-10-16T13:32:19+00:00",
+  "calibration_parameters_sha256": "0b6c11176d5c2e240279d5aacba913c3f471c1a3c39406101f0bbac770cc4ca3",
   "H": 4,
   "S": 8,
   "active_states": [

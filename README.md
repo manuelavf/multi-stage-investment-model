@@ -17,7 +17,8 @@ El proyecto construye un árbol de escenarios con datos trimestrales de 2010 a 2
 ```
 multistage-investment-model/
 ├── README.md
-├── requirements.txt              # dependencias
+├── requirements.txt              # dependencias (rangos de versiones)
+├── requirements-lock.txt         # versiones exactas usadas en la ejecución final
 ├── notebooks/
 │   ├── 00_data_download.ipynb
 │   ├── 01_calibration_states.ipynb
@@ -27,7 +28,7 @@ multistage-investment-model/
 │   ├── 05_politica_ev_vss.ipynb
 │   └── 06_validacion_2026.ipynb
 ├── data/
-│   ├── raw/                      # descargas diarias (no se versionan)
+│   ├── raw/                      # descargas diarias crudas (respaldo; los notebooks no las leen)
 │   ├── calibration/              # cierres trimestrales 2009–2025 y su metadata
 │   └── validation/               # cierres trimestrales dic-2025 a sep-2026 y su metadata
 └── results/
@@ -56,7 +57,7 @@ multistage-investment-model/
 
 ## Instalación
 
-Se recomienda Python 3.11 o 3.12. Desde la raíz del repositorio:
+Se requiere Python 3.11 o superior. La ejecución final de los notebooks se hizo con Python 3.13.16. Desde la raíz del repositorio:
 
 **Mac / Linux**
 
@@ -84,7 +85,17 @@ Para reproducir exactamente las versiones usadas en el trabajo, instalen `requir
 
 ## Ejecución
 
-Abran los notebooks con el kernel **Python (multistage-investment-model)** y ejecútenlos **en orden, del 00 al 06**. Cada notebook lee los archivos que generó el anterior y se detiene si alguno falta o fue modificado.
+Abran los notebooks con el kernel **Python (multistage-investment-model)** y ejecútenlos **en orden, del 00 al 06**, cada uno con el kernel reiniciado. Cada notebook lee los archivos que generó el anterior y se detiene si alguno falta o fue modificado.
+
+También se pueden ejecutar todos desde la terminal, en la carpeta `notebooks/`:
+
+```bash
+for n in 00 01 02 03 04 05 06; do
+  jupyter nbconvert --to notebook --execute --inplace ${n}_*.ipynb
+done
+```
+
+**Componentes aleatorios:** no hay. Ningún paso usa números aleatorios ni muestreo, así que no se requiere semilla: con los mismos archivos de datos, la ejecución produce los mismos resultados (salvo los tiempos de cómputo y diferencias de redondeo del solver del orden de 1e-8).
 
 
 ## Datos
@@ -93,20 +104,20 @@ Abran los notebooks con el kernel **Python (multistage-investment-model)** y eje
 
 **Ventanas solicitadas:** Calibración del 1 de diciembre de 2009 al 31 de diciembre de 2025 y validación del 1 de diciembre de 2025 al 30 de septiembre de 2026. Como la herramienta excluye la fecha final, se pidió hasta el 1 de enero de 2026 y el 1 de octubre de 2026, respectivamente.
 
-**Archivos entregados:** Solo se versionan los cierres trimestrales:
+**Archivos que usan los notebooks:** los cierres trimestrales.
 
 - `data/calibration/quarterly_adjclose_2009_2025.csv`: 65 cierres por activo, de diciembre de 2009 a diciembre de 2025.
 - `data/validation/quarterly_adjclose_2025_2026.csv`: 4 cierres por activo, de diciembre de 2025 a septiembre de 2026.
 
-Junto a cada archivo, `metadata.json` registra la fuente, la configuración de descarga, la fecha y hora de consulta y su huella digital (SHA-256).
+Junto a cada archivo, `metadata.json` registra la fuente, la configuración de descarga, la fecha y hora de consulta y su huella digital (SHA-256). La carpeta `data/raw/` conserva, como respaldo, los precios diarios descargados de los que se extrajeron esos cierres; los notebooks no la leen.
 
-**Fecha de consulta.** Calibración: _(completar con `consulted_at_bogota` de `data/calibration/metadata.json`)_. Validación: _(completar con `consulted_at_bogota` de `data/validation/metadata.json`)_.
+**Fecha de consulta:** ambos bloques se descargaron el 4 de octubre de 2026, después del cierre definitivo de septiembre. Calibración: 2026-10-04 16:26:02 (hora de Bogotá). Validación: 2026-10-04 16:26:16 (hora de Bogotá). La descarga se hizo con Python 3.14.6 y yfinance 1.7.0, como registran los `metadata.json`.
 
 ## Reproducibilidad
 
 **Los datos no se vuelven a descargar:** Yahoo recalcula toda la serie de cierres ajustados cada vez que un fondo hace un pago, de modo que una descarga posterior puede dar niveles distintos. Por eso el notebook 00 reutiliza los archivos trimestrales ya guardados y solo los verifica. Para descargarlos de nuevo hay que poner `FORCE_DOWNLOAD = True` en su configuración.
 
-**Separación temporal:** El modelo se construye como si la decisión se tomara a finales de diciembre de 2025. Los notebooks 01 a 05 usan únicamente datos de calibración. Tanto la política estocástica como la regla del modelo de valor esperado se guardan con su huella digital antes de la validación, y el notebook 06 comprueba esas huellas antes de abrir los datos de 2026. Ningún parámetro se reestima ni se vuelve a optimizar con información de 2026.
+**Separación temporal:** El modelo se construye como si la decisión se tomara a finales de diciembre de 2025. Los notebooks 01 a 05 usan únicamente datos de calibración. Tanto la política estocástica como la regla del modelo de valor esperado se guardan con su huella digital antes de la validación, y el notebook 06 comprueba esas huellas antes de abrir los datos de 2026. `results/validation/validation_summary.json` registra las huellas verificadas, que coinciden con las de `results/policy/`. Ningún parámetro se reestima ni se vuelve a optimizar con información de 2026.
 
 ## Solver
 
