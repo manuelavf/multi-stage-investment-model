@@ -87,14 +87,6 @@ Para reproducir exactamente las versiones usadas en el trabajo, instalen `requir
 
 Abran los notebooks con el kernel **Python (multistage-investment-model)** y ejecútenlos **en orden, del 00 al 06**, cada uno con el kernel reiniciado. Cada notebook lee los archivos que generó el anterior y se detiene si alguno falta o fue modificado.
 
-También se pueden ejecutar todos desde la terminal, en la carpeta `notebooks/`:
-
-```bash
-for n in 00 01 02 03 04 05 06; do
-  jupyter nbconvert --to notebook --execute --inplace ${n}_*.ipynb
-done
-```
-
 **Componentes aleatorios:** no hay. Ningún paso usa números aleatorios ni muestreo, así que no se requiere semilla: con los mismos archivos de datos, la ejecución produce los mismos resultados (salvo los tiempos de cómputo y diferencias de redondeo del solver del orden de 1e-8).
 
 
